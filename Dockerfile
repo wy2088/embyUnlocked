@@ -64,7 +64,7 @@ RUN echo "Signing Certifications" && \
 
 RUN echo "Setting Up Crack Server" && \
  apt install -y nginx --no-install-recommends && \
- echo "c2VydmVyIHsKCiAgICBsaXN0ZW4gNDQzIHNzbDsKICAgIHNlcnZlcl9uYW1lIG1iM2FkbWluLmNvbTsKCiAgICBzc2xfY2VydGlmaWNhdGUgL2NyYWNrcy9zc2wvcm9vdC5jcnQ7CiAgICBzc2xfY2VydGlmaWNhdGVfa2V5IC9jcmFja3Mvc3NsL3Jvb3Qua2V5OwoKICAgIHNzbF9zZXNzaW9uX3RpbWVvdXQgNW07CiAgICBzc2xfcHJvdG9jb2xzIFRMU3YxIFRMU3YxLjEgVExTdjEuMjsKICAgIHNzbF9jaXBoZXJzIEVDREhFLVJTQS1BRVMxMjgtR0NNLVNIQTI1NjpISUdIOiFhTlVMTDohTUQ1OiFSQzQ6IURIRTsKICAgIHNzbF9wcmVmZXJfc2VydmVyX2NpcGhlcnMgb247CiAgICAKICAgIGFkZF9oZWFkZXIgQWNjZXNzLUNvbnRyb2wtQWxsb3ctT3JpZ2luICo7CiAgICBhZGRfaGVhZGVyIEFjY2Vzcy1Db250cm9sLUFsbG93LUhlYWRlcnMgKjsKICAgIGFkZF9oZWFkZXIgQWNjZXNzLUNvbnRyb2wtQWxsb3ctTWV0aG9kICo7CiAgICBhZGRfaGVhZGVyIEFjY2Vzcy1Db250cm9sLUFsbG93LUNyZWRlbnRpYWxzIHRydWU7CgogICAgbG9jYXRpb24gL2FkbWluL3NlcnZpY2UvcmVnaXN0cmF0aW9uL3ZhbGlkYXRlRGV2aWNlIHsKICAgICAgICBkZWZhdWx0X3R5cGUgYXBwbGljYXRpb24vanNvbjsKICAgICAgICByZXR1cm4gMjAwICd7ImNhY2hlRXhwaXJhdGlvbkRheXMiOiAzNjUsIm1lc3NhZ2UiOiAiRGV2aWNlIFZhbGlkIiwicmVzdWx0Q29kZSI6ICJHT09EIn0nOwogICAgfQoKICAgIGxvY2F0aW9uIC9hZG1pbi9zZXJ2aWNlL3JlZ2lzdHJhdGlvbi92YWxpZGF0ZSB7CiAgICAgICAgZGVmYXVsdF90eXBlIGFwcGxpY2F0aW9uL2pzb247CiAgICAgICAgcmV0dXJuIDIwMCAneyJmZWF0SWQiOiIiLCJyZWdpc3RlcmVkIjp0cnVlLCJleHBEYXRlIjoiMjA5OS0wMS0wMSIsImtleSI6IiJ9JzsKICAgIH0KICAgIGxvY2F0aW9uIC9hZG1pbi9zZXJ2aWNlL3JlZ2lzdHJhdGlvbi9nZXRTdGF0dXMgewogICAgICAgIGRlZmF1bHRfdHlwZSBhcHBsaWNhdGlvbi9qc29uOwogICAgICAgIHJldHVybiAyMDAgJ3siZGV2aWNlU3RhdHVzIjoiMCIsInBsYW5UeXBlIjoiTGlmZXRpbWUiLCJzdWJzY3JpcHRpb25zIjp7fX0nOwogICAgfQoKfQo=" \
+ echo "c2VydmVyIHsKCiAgICBsaXN0ZW4gNDQzIHNzbDsKICAgIHNlcnZlcl9uYW1lIG1iM2FkbWluLmNvbTsKCiAgICBzc2xfY2VydGlmaWNhdGUgL2NyYWNrcy9zc2wvcm9vdC5jcnQ7CiAgICBzc2xfY2VydGlmaWNhdGVfa2V5IC9jcmFja3Mvc3NsL3Jvb3Qua2V5OwoKICAgIHNzbF9zZXNzaW9uX3RpbWVvdXQgNW07CiAgICBzc2xfcHJvdG9jb2xzIFRMU3YxIFRMU3YxLjEgVExTdjEuMjsKICAgIHNzbF9jaXBoZXJzIEVDREhFLVJTQS1BRVMxMjgtR0NNLVNIQTI1NjpISUdIOiFhTlVMTDohTUQ1OiFSQzQ6IURIRTsKICAgIHNzbF9wcmVmZXJfc2VydmVyX2NpcGhlcnMgb247CiAgICAKICAgIGFkZF9oZWFkZXIgQWNjZXNzLUNvbnRyb2wtQWxsb3ctT3JpZ2luICo7CiAgICBhZGRfaGVhZGVyIEFjY2Vzcy1Db250cm9sLUFsbG93LUhlYWRlcnMgKjsKICAgIGFkZF9oZWFkZXIgQWNjZXNzLUNvbnRyb2wtQWxsb3ctTWV0aG9kICo7CiAgICBhZGRfaGVhZGVyIEFjY2Vzcy1Db250cm9sLUFsbG93LUNyZWRlbnRpYWxzIHRydWU7CgogICAgbG9jYXRpb24gL2FkbWluL3NlcnZpY2UvcmVnaXN0cmF0aW9uL3ZhbGlkYXRlRGV2aWNlIHsKICAgICAgICBkZWZhdWx0X3R5cGUgYXBwbGljYXRpb24vanNvbjsKICAgICAgICByZXR1cm4gMjAwICd7ImNhY2hlRXhwaXJhdGlvbkRheXMiOiAyMzMsIm1lc3NhZ2UiOiAiRGV2aWNlIFZhbGlkIiwicmVzdWx0Q29kZSI6ICJHT09EIn0nOwogICAgfQoKICAgIGxvY2F0aW9uIC9hZG1pbi9zZXJ2aWNlL3JlZ2lzdHJhdGlvbi92YWxpZGF0ZSB7CiAgICAgICAgZGVmYXVsdF90eXBlIGFwcGxpY2F0aW9uL2pzb247CiAgICAgICAgcmV0dXJuIDIwMCAneyJmZWF0SWQiOiIxQTdBQTQ0MS0xNkVGLTQ4NjEtQkE5Qy04NjI0ODc5NEVGODQiLCJyZWdpc3RlcmVkIjp0cnVlLCJleHBEYXRlIjoiMjMzMy0xMC0wMSIsImtleSI6IjFBN0FBNDQxLTE2RUYtNDg2MS1CQTlDLTg2MjQ4Nzk0RUY4NCJ9JzsKICAgIH0KICAgIGxvY2F0aW9uIC9hZG1pbi9zZXJ2aWNlL3JlZ2lzdHJhdGlvbi9nZXRTdGF0dXMgewogICAgICAgIGRlZmF1bHRfdHlwZSBhcHBsaWNhdGlvbi9qc29uOwogICAgICAgIHJldHVybiAyMDAgJ3siZGV2aWNlU3RhdHVzIjoiMCIsInBsYW5UeXBlIjoiTGlmZXRpbWUiLCJzdWJzY3JpcHRpb25zIjp7fX0nOwogICAgfQoKfQo=" \
   | base64 --decode | tee -a /etc/nginx/conf.d/pathcer.conf && \
 # restart to check config
  service nginx restart
@@ -89,7 +89,7 @@ echo "IyEvdXNyL2Jpbi93aXRoLWNvbnRlbnYgYmFzaAoKZWNobyAiU2VuZGluZyBDZXJ0aWZpY2F0aW
   | base64 --decode | tee -a /etc/cont-init.d/40-gid-video && \
  echo "IyEvdXNyL2Jpbi93aXRoLWNvbnRlbnYgYmFzaAoKIyBzZXQgdW1hc2sKVU1BU0tfU0VUPSR7VU1BU0tfU0VUOi0wMjJ9CnVtYXNrICIkVU1BU0tfU0VUIgoKIyBlbnYgc2V0dGluZ3MKQVBQX0RJUj0iL2FwcC9lbWJ5IgpleHBvcnQgTERfTElCUkFSWV9QQVRIPSIke0FQUF9ESVJ9IgpleHBvcnQgRk9OVENPTkZJR19QQVRIPSIke0FQUF9ESVJ9Ii9ldGMvZm9udHMKaWYgWyAtZCAiL2xpYi94ODZfNjQtbGludXgtZ251IiBdOyB0aGVuCglleHBvcnQgTElCVkFfRFJJVkVSU19QQVRIPSIke0FQUF9ESVJ9Ii9kcmkKZmkKZXhwb3J0IFNTTF9DRVJUX0ZJTEU9IiR7QVBQX0RJUn0iL2V0Yy9zc2wvY2VydHMvY2EtY2VydGlmaWNhdGVzLmNydAoKZXhlYyBcCglzNi1zZXR1aWRnaWQgYWJjIC9hcHAvZW1ieS9FbWJ5U2VydmVyIFwKCS1wcm9ncmFtZGF0YSAvY29uZmlnIFwKCS1mZmRldGVjdCAvYXBwL2VtYnkvZmZkZXRlY3QgXAoJLWZmbXBlZyAvYXBwL2VtYnkvZmZtcGVnIFwKCS1mZnByb2JlIC9hcHAvZW1ieS9mZnByb2JlIFwKCS1yZXN0YXJ0ZXhpdGNvZGUgMw==" \
   | base64 --decode | tee -a /etc/services.d/emby/run && \
- echo "IyEvdXNyL2Jpbi93aXRoLWNvbnRlbnYgYmFzaAoKbmdpbng=" \
+ echo "IyEvdXNyL2Jpbi93aXRoLWNvbnRlbnYgYmFzaAoKbmdpbngKCmVjaG8gInRlc3RpbmcuLi4iCmN1cmwgLVggUE9TVCBodHRwczovL21iM2FkbWluLmNvbS9hZG1pbi9zZXJ2aWNlL3JlZ2lzdHJhdGlvbi92YWxpZGF0ZQpjdXJsIC1YIFBPU1QgaHR0cHM6Ly9tYjNhZG1pbi5jb20vYWRtaW4vc2VydmljZS9yZWdpc3RyYXRpb24vdmFsaWRhdGVEZXZpY2UKY3VybCAtWCBQT1NUIGh0dHBzOi8vbWIzYWRtaW4uY29tL2FkbWluL3NlcnZpY2UvcmVnaXN0cmF0aW9uL2dldFN0YXR1cwplY2hvICI+Xzwi" \
   | base64 --decode | tee -a /etc/cont-init.d/50-nginx-start
 
 EXPOSE 8096 8920
@@ -111,3 +111,38 @@ VOLUME /config
 # cat /cracks/ssl/root.crt | tee -a /app/emby/etc/ssl/certs/ca-certificates.crt
 
 # dpkg-reconfigure ca-certificates
+
+
+# server {
+
+#     listen 443 ssl;
+#     server_name mb3admin.com;
+
+#     ssl_certificate /cracks/ssl/root.crt;
+#     ssl_certificate_key /cracks/ssl/root.key;
+
+#     ssl_session_timeout 5m;
+#     ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+#     ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;
+#     ssl_prefer_server_ciphers on;
+    
+#     add_header Access-Control-Allow-Origin *;
+#     add_header Access-Control-Allow-Headers *;
+#     add_header Access-Control-Allow-Method *;
+#     add_header Access-Control-Allow-Credentials true;
+
+#     location /admin/service/registration/validateDevice {
+#         default_type application/json;
+#         return 200 '{"cacheExpirationDays": 233,"message": "Device Valid","resultCode": "GOOD"}';
+#     }
+
+#     location /admin/service/registration/validate {
+#         default_type application/json;
+#         return 200 '{"featId":"1A7AA441-16EF-4861-BA9C-86248794EF84","registered":true,"expDate":"2333-10-01","key":"1A7AA441-16EF-4861-BA9C-86248794EF84"}';
+#     }
+#     location /admin/service/registration/getStatus {
+#         default_type application/json;
+#         return 200 '{"deviceStatus":"0","planType":"Lifetime","subscriptions":{}}';
+#     }
+
+# }

@@ -11,3 +11,5 @@ services:
       - TZ=Europe/London
     ports:
       - 8096:8096
+    volumes:
+      - /Volumes/Hanabi/Media/movies:/data/tests
