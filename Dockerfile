@@ -72,6 +72,11 @@ RUN echo "Setting Up Crack Server" && \
 RUN echo "Cleaning APT System" && \
  apt remove --purge -y cpio jq rpm2cpio && apt autoremove -y && rm -rf /var/lib/apt/lists/*
 
+RUN echo "Patching NetCore Runtime Settings" && \
+ rm -rf /app/emby/EmbyServer.runtimeconfig.json && \
+ echo "ewogICAgInJ1bnRpbWVPcHRpb25zIjogewogICAgICAgICJjb25maWdQcm9wZXJ0aWVzIjogewogICAgICAgICAgICAiU3lzdGVtLk5ldC5IdHRwLlVzZVNvY2tldHNIdHRwSGFuZGxlciI6IGZhbHNlCiAgICAgICAgfSwKICAgICAgICAidGZtIjogIm5ldGNvcmVhcHAzLjEiLAogICAgICAgICJpbmNsdWRlZEZyYW1ld29ya3MiOiBbCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICJuYW1lIjogIk1pY3Jvc29mdC5ORVRDb3JlLkFwcCIsCiAgICAgICAgICAgICAgICAidmVyc2lvbiI6ICIzLjEuMiIKICAgICAgICAgICAgfQogICAgICAgIF0KICAgIH0KfQ==" \
+  | base64 --decode | tee -a /app/emby/EmbyServer.runtimeconfig.json
+
 RUN echo "Sending Boot Commands" && \
  mkdir -p /etc/cont-init.d/ /etc/services.d/emby && \
  echo "IyEvdXNyL2Jpbi93aXRoLWNvbnRlbnYgYmFzaAoKIyBDcmVhdGUgZm9sZGVycwpta2RpciAtcCBcCgkvZGF0YSBcCgkvdHJhbnNjb2RlCgojIHBlcm1pc3Npb25zIChub24tcmVjdXJzaXZlKSBvbiBjb25maWcgcm9vdCBhbmQgZm9sZGVycwpjaG93biBhYmM6YWJjIFwKCS9jb25maWcgXAoJL2RhdGEgXAoJL3RyYW5zY29kZQppZiBbIC1uICIkKGxzIC1BIC9kYXRhIDI+L2Rldi9udWxsKSIgXTsgdGhlbgpjaG93biBhYmM6YWJjIFwKCS9kYXRhLyoKZmk=" \
