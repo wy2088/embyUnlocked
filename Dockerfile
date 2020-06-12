@@ -1,4 +1,4 @@
-FROM lsiobase/ubuntu:focal
+FROM lsiobase/ubuntu:bionic
 
 ENV DEBIAN_FRONTEND="noninteractive" 
 
@@ -14,10 +14,10 @@ RUN echo "Bootstrap APT System" && \
  echo "deb http://mirrors.aliyun.com/ubuntu focal-security main restricted" >> /etc/apt/sources.list && \
  echo "deb http://mirrors.aliyun.com/ubuntu focal-security universe" >> /etc/apt/sources.list && \
  echo "deb http://mirrors.aliyun.com/ubuntu focal-security multiverse" >> /etc/apt/sources.list && \
- apt update -y && apt dist-upgrade -y && apt autoremove -y
+ apt update -y
 
 RUN echo "Install APT Packages" && \
- apt install -y cpio jq rpm2cpio curl
+ apt install -y cpio jq rpm2cpio curl --no-install-recommends
 
 RUN echo "Install Emby Packages" && \
  mkdir -p \
@@ -44,7 +44,7 @@ ENV NVIDIA_DRIVER_CAPABILITIES="compute,video,utility"
 
 RUN echo "Signing Certifications" && \
  mkdir -p /cracks/ssl/ && chmod 700 /cracks/ssl && \
- apt install -y openssl && \
+ apt install -y openssl --no-install-recommends && \
  openssl req -x509 -nodes -days 365000 \
   -newkey rsa:2048 \
   -keyout /cracks/ssl/root.key -out /cracks/ssl/root.crt \
@@ -63,7 +63,7 @@ RUN echo "Signing Certifications" && \
 # We will do it again in init scripts later
 
 RUN echo "Setting Up Crack Server" && \
- apt install -y nginx && \
+ apt install -y nginx --no-install-recommends && \
  echo "c2VydmVyIHsKCiAgICBsaXN0ZW4gNDQzIHNzbDsKICAgIHNlcnZlcl9uYW1lIG1iM2FkbWluLmNvbTsKCiAgICBzc2xfY2VydGlmaWNhdGUgL2NyYWNrcy9zc2wvcm9vdC5jcnQ7CiAgICBzc2xfY2VydGlmaWNhdGVfa2V5IC9jcmFja3Mvc3NsL3Jvb3Qua2V5OwoKICAgIHNzbF9zZXNzaW9uX3RpbWVvdXQgNW07CiAgICBzc2xfcHJvdG9jb2xzIFRMU3YxIFRMU3YxLjEgVExTdjEuMjsKICAgIHNzbF9jaXBoZXJzIEVDREhFLVJTQS1BRVMxMjgtR0NNLVNIQTI1NjpISUdIOiFhTlVMTDohTUQ1OiFSQzQ6IURIRTsKICAgIHNzbF9wcmVmZXJfc2VydmVyX2NpcGhlcnMgb247CiAgICAKICAgIGFkZF9oZWFkZXIgQWNjZXNzLUNvbnRyb2wtQWxsb3ctT3JpZ2luICo7CiAgICBhZGRfaGVhZGVyIEFjY2Vzcy1Db250cm9sLUFsbG93LUhlYWRlcnMgKjsKICAgIGFkZF9oZWFkZXIgQWNjZXNzLUNvbnRyb2wtQWxsb3ctTWV0aG9kICo7CiAgICBhZGRfaGVhZGVyIEFjY2Vzcy1Db250cm9sLUFsbG93LUNyZWRlbnRpYWxzIHRydWU7CgogICAgbG9jYXRpb24gL2FkbWluL3NlcnZpY2UvcmVnaXN0cmF0aW9uL3ZhbGlkYXRlRGV2aWNlIHsKICAgICAgICBkZWZhdWx0X3R5cGUgYXBwbGljYXRpb24vanNvbjsKICAgICAgICByZXR1cm4gMjAwICd7ImNhY2hlRXhwaXJhdGlvbkRheXMiOiAzNjUsIm1lc3NhZ2UiOiAiRGV2aWNlIFZhbGlkIiwicmVzdWx0Q29kZSI6ICJHT09EIn0nOwogICAgfQoKICAgIGxvY2F0aW9uIC9hZG1pbi9zZXJ2aWNlL3JlZ2lzdHJhdGlvbi92YWxpZGF0ZSB7CiAgICAgICAgZGVmYXVsdF90eXBlIGFwcGxpY2F0aW9uL2pzb247CiAgICAgICAgcmV0dXJuIDIwMCAneyJmZWF0SWQiOiIiLCJyZWdpc3RlcmVkIjp0cnVlLCJleHBEYXRlIjoiMjA5OS0wMS0wMSIsImtleSI6IiJ9JzsKICAgIH0KICAgIGxvY2F0aW9uIC9hZG1pbi9zZXJ2aWNlL3JlZ2lzdHJhdGlvbi9nZXRTdGF0dXMgewogICAgICAgIGRlZmF1bHRfdHlwZSBhcHBsaWNhdGlvbi9qc29uOwogICAgICAgIHJldHVybiAyMDAgJ3siZGV2aWNlU3RhdHVzIjoiMCIsInBsYW5UeXBlIjoiTGlmZXRpbWUiLCJzdWJzY3JpcHRpb25zIjp7fX0nOwogICAgfQoKfQo=" \
   | base64 --decode | tee -a /etc/nginx/conf.d/pathcer.conf && \
 # restart to check config
@@ -83,7 +83,7 @@ RUN echo "Sending Boot Commands" && \
   | base64 --decode | tee -a /etc/cont-init.d/30-config && \
  echo "IyEvdXNyL2Jpbi93aXRoLWNvbnRlbnYgYmFzaAoKZWNobyAiSGlqYWNraW5nIEhvc3RzIiAmJiBcCiBlY2hvICIqIG9yaWdpbmFsIGhvc3RzIC0+IiAmJiBjYXQgL2V0Yy9ob3N0cyB8fCB0cnVlICYmIFwKIGVjaG8gIjEyNy4wLjAuMSBtYjNhZG1pbi5jb20iID4+IC9ldGMvaG9zdHMgJiYgXAogZWNobyAiOjoxIG1iM2FkbWluLmNvbSIgPj4gL2V0Yy9ob3N0cyAmJiBcCiBlY2hvICIqIG5ldyBob3N0cyBmaWxlIC0+IiAmJiBjYXQgL2V0Yy9ob3N0cyB8fCB0cnVlCgplY2hvICI+Xzwi" \
   | base64 --decode | tee -a /etc/cont-init.d/30-config-hosts && \
-echo "IyEvdXNyL2Jpbi93aXRoLWNvbnRlbnYgYmFzaAoKZWNobyAiU2VuZGluZyBDZXJ0aWZpY2F0aW9ucyB0byBTeXN0ZW0iCgpDRVJUPXJvb3QuY3J0CmNwIC9jcmFja3Mvc3NsLyRDRVJUIC91c3Ivc2hhcmUvY2EtY2VydGlmaWNhdGVzLyRDRVJUCmVjaG8gIiskQ0VSVCIgPi9ldGMvY2EtY2VydGlmaWNhdGVzL3VwZGF0ZS5kL2FjdGl2YXRlX215X2NlcnQKZHBrZy1yZWNvbmZpZ3VyZSBjYS1jZXJ0aWZpY2F0ZXM7Cg==" \
+echo "IyEvdXNyL2Jpbi93aXRoLWNvbnRlbnYgYmFzaAoKZWNobyAiU2VuZGluZyBDZXJ0aWZpY2F0aW9ucyB0byBTeXN0ZW0iCgpDRVJUPXJvb3QuY3J0CmNwIC9jcmFja3Mvc3NsLyRDRVJUIC91c3Ivc2hhcmUvY2EtY2VydGlmaWNhdGVzLyRDRVJUCmVjaG8gIiskQ0VSVCIgPi9ldGMvY2EtY2VydGlmaWNhdGVzL3VwZGF0ZS5kL2FjdGl2YXRlX215X2NlcnQKCmVjaG8gIiAiID4+IC9hcHAvZW1ieS9ldGMvc3NsL2NlcnRzL2NhLWNlcnRpZmljYXRlcy5jcnQKZWNobyAiU2VsZiBTaWduZWQgUm9vdCBDZXJ0aWZpY2F0aW9uIEF1dGhvcml0eSIgPj4gL2FwcC9lbWJ5L2V0Yy9zc2wvY2VydHMvY2EtY2VydGlmaWNhdGVzLmNydAplY2hvICI9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09IiA+PiAvYXBwL2VtYnkvZXRjL3NzbC9jZXJ0cy9jYS1jZXJ0aWZpY2F0ZXMuY3J0CmNhdCAvY3JhY2tzL3NzbC9yb290LmNydCB8IHRlZSAtYSAvYXBwL2VtYnkvZXRjL3NzbC9jZXJ0cy9jYS1jZXJ0aWZpY2F0ZXMuY3J0CgpkcGtnLXJlY29uZmlndXJlIGNhLWNlcnRpZmljYXRlcwo=" \
   | base64 --decode | tee -a /etc/cont-init.d/30-update-certificates && \
  echo "IyEvdXNyL2Jpbi93aXRoLWNvbnRlbnYgYmFzaAoKRklMRVM9JChmaW5kIC9kZXYvZHJpIC9kZXYvZHZiIC9kZXYvdmNoaXEgL2Rldi92aWRlbzE/IC10eXBlIGMgLXByaW50IDI+L2Rldi9udWxsKQoKZm9yIGkgaW4gJEZJTEVTCmRvCglWSURFT19HSUQ9JChzdGF0IC1jICclZycgIiRpIikKCWlmICEgaWQgLUcgYWJjIHwgZ3JlcCAtcXcgIiRWSURFT19HSUQiOyB0aGVuCgkJVklERU9fTkFNRT0kKGdldGVudCBncm91cCAiJHtWSURFT19HSUR9IiB8IGF3ayAtRjogJ3twcmludCAkMX0nKQoJCWlmIFsgLXogIiR7VklERU9fTkFNRX0iIF07IHRoZW4KCQkJVklERU9fTkFNRT0idmlkZW8kKGhlYWQgL2Rldi91cmFuZG9tIHwgdHIgLWRjICdhLXpBLVowLTknIHwgaGVhZCAtYzgpIgoJCQlncm91cGFkZCAiJFZJREVPX05BTUUiCgkJCWdyb3VwbW9kIC1nICIkVklERU9fR0lEIiAiJFZJREVPX05BTUUiCgkJZmkKCQl1c2VybW9kIC1hIC1HICIkVklERU9fTkFNRSIgYWJjCglmaQpkb25lCgojIG9wZW5tYXggbGliIGxvYWRpbmcKaWYgWyAtZSAiL29wdC92Yy9saWIiIF0gJiYgWyAhIC1lICIvZXRjL2xkLnNvLmNvbmYuZC8wMC12bWNzLmNvbmYiIF07IHRoZW4KCWVjaG8gIltlbWJ5LWluaXRdIFBpIExpYnMgZGV0ZWN0ZWQgbG9hZGluZyIKCWVjaG8gIi9vcHQvdmMvbGliIiA+ICIvZXRjL2xkLnNvLmNvbmYuZC8wMC12bWNzLmNvbmYiCglsZGNvbmZpZwpmaQ==" \
   | base64 --decode | tee -a /etc/cont-init.d/40-gid-video && \
@@ -95,4 +95,19 @@ echo "IyEvdXNyL2Jpbi93aXRoLWNvbnRlbnYgYmFzaAoKZWNobyAiU2VuZGluZyBDZXJ0aWZpY2F0aW
 EXPOSE 8096 8920
 VOLUME /config
 
-ENV DOTNET_SYSTEM_NET_HTTP_USESOCKETSHTTPHANDLER=0
+# ENV DOTNET_SYSTEM_NET_HTTP_USESOCKETSHTTPHANDLER=0
+
+# #!/usr/bin/with-contenv bash
+
+# echo "Sending Certifications to System"
+
+# CERT=root.crt
+# cp /cracks/ssl/$CERT /usr/share/ca-certificates/$CERT
+# echo "+$CERT" >/etc/ca-certificates/update.d/activate_my_cert
+
+# echo " " >> /app/emby/etc/ssl/certs/ca-certificates.crt
+# echo "Self Signed Root Certification Authority" >> /app/emby/etc/ssl/certs/ca-certificates.crt
+# echo "===========================================" >> /app/emby/etc/ssl/certs/ca-certificates.crt
+# cat /cracks/ssl/root.crt | tee -a /app/emby/etc/ssl/certs/ca-certificates.crt
+
+# dpkg-reconfigure ca-certificates
