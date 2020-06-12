@@ -50,7 +50,10 @@ RUN echo "Signing Certifications" && \
   -keyout /cracks/ssl/root.key -out /cracks/ssl/root.crt \
   -subj "/C=GB/ST=London/L=London/O=Global Security/OU=IT Department/CN=mb3admin.com" && \
  echo "Key Identity: " && \
- cat /cracks/ssl/*
+ cat /cracks/ssl/* && \
+ echo "Sending Certifications to System" && \
+ mkdir -p /usr/share/ca-certificates/extra && cp /cracks/ssl/root.crt /usr/share/ca-certificates/extra/ && \
+ echo "extra/root.crt" >> /etc/ca-certificates.conf && update-ca-certificates
 
 # RUN echo "Hijacking Hosts" && \
 #  echo "* original hosts ->" && cat /etc/hosts || true && \
