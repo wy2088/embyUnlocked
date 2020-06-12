@@ -1,0 +1,16 @@
+#!/usr/bin/with-contenv bash
+
+# Create folders
+mkdir -p \
+	/data \
+	/transcode
+
+# permissions (non-recursive) on config root and folders
+chown abc:abc \
+	/config \
+	/data \
+	/transcode
+if [ -n "$(ls -A /data 2>/dev/null)" ]; then
+chown abc:abc \
+	/data/*
+fi
