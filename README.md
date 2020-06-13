@@ -10,11 +10,55 @@ Emby was free and developed under community, but there is a day they decided to 
 >
 > [Issue 3479 - Source Code Missing (Going Proprietary)](https://web.archive.org/web/20181212100152/https://github.com/MediaBrowser/Emby/issues/3479)
 
+## Result
 
-## Instructions
+![Example Result](./example.png)
+
+## Instructions - Server
 
 Find some where safe to download our git repo
 
     git clone https://github.com/Co2333/embyUnlocked
+    cd embyUnlocked
 
+Modify the docker-compose.yml as you want
 
+> See [LinuxServer/emby](https://github.com/linuxserver/docker-emby/) for configuration information
+
+    nano ./docker-compose.yml
+    docker-compose up --build
+
+After build, run following command for maintain purpose
+
+    docker-compose kill
+    docker-compose up -d
+
+## Instructions - Client
+
+After the first start up, you will have your unlocked emby container image. Input any key will work. But this is not enough for unlock all feature because server activations and client activations are isolated between each of each.
+
+#### You Are On Your Own To Unlock Client Features
+
+#### Example - Using [Surge](nssurge.com)
+
+Coming Soon
+
+## License 
+
+```
+            DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
+                    Version 2, December 2004
+
+ Copyright (C) 2004 Ihave Noname <idonthaveanemail@dowtf.com>
+
+ Everyone is permitted to copy and distribute verbatim or modified
+ copies of this license document, and changing it is allowed as long
+ as the name is changed.
+
+            DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
+   TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
+
+  0. You just DO WHAT THE FUCK YOU WANT TO.
+```
+
+2020.6.13 by [Ihave Noname]
