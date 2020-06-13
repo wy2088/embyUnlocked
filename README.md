@@ -39,9 +39,32 @@ After the first start up, you will have your unlocked emby container image. Inpu
 
 #### You Are On Your Own To Unlock Client Features
 
+---
+
 #### Example - Using [Surge](nssurge.com)
 
-Coming Soon
+- Requirement - Surge iOS/macOS with JS Engine Support
+
+1 Download & Upload
+
+- [emby-adr-v.js](./Surge/emby-adr-v.js)
+- [emby-adr-vD.js](./Surge/emby-adr-vD.js)
+- [emby-adr-gS.js](./Surge/emby-adr-gS.js)
+
+Above files are required, Surge will download them automatically. Note that those file reqires to be accessible worldwide.
+
+2 Insert Following Configuration
+
+```
+[Script]
+emby-adr-vD.js = script-path=https://www.qaq.wiki/assets/subrs/rabbit/emby-adr-vD.js,requires-body=1,max-size=0,type=http-response,pattern=^https://mb3admin.com/admin/service/registration/validateDevice
+emby-adr-v.js = script-path=https://www.qaq.wiki/assets/subrs/rabbit/emby-adr-v.js,requires-body=1,max-size=0,type=http-response,pattern=^https://mb3admin.com/admin/service/registration/validate
+emby-adr-gS.js = script-path=https://www.qaq.wiki/assets/subrs/rabbit/emby-adr-gS.js,requires-body=1,max-size=0,type=http-response,pattern=^https://mb3admin.com/admin/service/registration/getStatus
+```
+
+3 Update Config & Resources in Surge
+
+---
 
 ## License 
 
