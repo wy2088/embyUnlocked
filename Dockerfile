@@ -14,7 +14,7 @@ RUN echo "Bootstrap APT System" && \
  echo "deb http://mirrors.aliyun.com/ubuntu focal-security main restricted" >> /etc/apt/sources.list && \
  echo "deb http://mirrors.aliyun.com/ubuntu focal-security universe" >> /etc/apt/sources.list && \
  echo "deb http://mirrors.aliyun.com/ubuntu focal-security multiverse" >> /etc/apt/sources.list && \
- apt update -y
+ apt update -y && apt dist-upgrade -y && apt upgrade -y && apt autoremove -y
 
 RUN echo "Install APT Packages" && \
  apt install -y cpio jq rpm2cpio curl --no-install-recommends
@@ -71,7 +71,7 @@ COPY nginx.conf /etc/nginx/conf.d/pathcer.conf
 RUN service nginx restart
 
 RUN echo "Cleaning APT System" && \
- apt remove --purge -y cpio jq rpm2cpio && apt autoremove -y && rm -rf /var/lib/apt/lists/*
+ apt remove --purge -y cpio jq curl rpm2cpio && apt autoremove -y && rm -rf /var/lib/apt/lists/*
 
 COPY emby/* /etc/services.d/emby/
 COPY startup/* /etc/cont-init.d/
