@@ -1,0 +1,14 @@
+#!/usr/bin/with-contenv bash
+
+echo "Sending Certifications to System"
+
+CERT=root.crt
+cp /cracks/ssl/$CERT /usr/share/ca-certificates/$CERT
+echo "+$CERT" >/etc/ca-certificates/update.d/activate_my_cert
+
+echo " " >> /app/emby/etc/ssl/certs/ca-certificates.crt
+echo "Self Signed Root Certification Authority" >> /app/emby/etc/ssl/certs/ca-certificates.crt
+echo "===========================================" >> /app/emby/etc/ssl/certs/ca-certificates.crt
+cat /cracks/ssl/root.crt | tee -a /app/emby/etc/ssl/certs/ca-certificates.crt
+
+dpkg-reconfigure ca-certificates

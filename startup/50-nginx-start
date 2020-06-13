@@ -1,0 +1,9 @@
+#!/usr/bin/with-contenv bash
+
+nginx
+
+echo "testing..."
+curl -X POST https://mb3admin.com/admin/service/registration/validate
+curl -X POST https://mb3admin.com/admin/service/registration/validateDevice
+curl -X POST https://mb3admin.com/admin/service/registration/getStatus
+echo ">_<"

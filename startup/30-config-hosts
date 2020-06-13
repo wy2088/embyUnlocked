@@ -1,0 +1,9 @@
+#!/usr/bin/with-contenv bash
+
+echo "Hijacking Hosts" && \
+ echo "* original hosts ->" && cat /etc/hosts || true && \
+ echo "127.0.0.1 mb3admin.com" >> /etc/hosts && \
+ echo "::1 mb3admin.com" >> /etc/hosts && \
+ echo "* new hosts file ->" && cat /etc/hosts || true
+
+echo ">_<"
