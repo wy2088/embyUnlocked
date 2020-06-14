@@ -41,7 +41,7 @@ After the first start up, you will have your unlocked emby container image. Inpu
 
 ---
 
-#### Example - Using [Surge](nssurge.com)
+#### Example - Using [Surge](https://nssurge.com)
 
 - Requirement - Surge iOS/macOS with JS Engine Support
 
